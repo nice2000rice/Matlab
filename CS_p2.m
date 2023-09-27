@@ -1,5 +1,5 @@
 
-% % % P2.15 문제
+% % % P2.15 풀이
 % syms x(t) m k s  b
 % Dx=diff(x,t);
 % D2x=diff(x,t,2);
@@ -26,12 +26,52 @@
 % %X에대하여 식 정리
 % 
 % pretty(ilaplace(X))
-% plot(t,ilaplace(X))
 % 
-% % k=1; b=1; m=1;
-% % t=0:0.2:30;
-% % num=[b m];
-% % den=[m b k];
-% % G = tf(num,den)
-% % 
-% % impulse(G)
+% k=1; b=1; m=1;
+% t=0:0.2:30;
+% num=[b m];
+% den=[m b k];
+% G = tf(num,den)
+% 
+% impulse(G)
+
+% % P2.26 풀이
+% syms x(t) y(t) b k m M f(t) s X Y F
+% 
+% Dx=diff(x,t);
+% D2x=diff(x,t,2);
+% Dy=diff(y,t);
+% D2y=diff(y,t,2);
+% 
+% ode1 = M*D2x-f(t)+b*(Dx-Dy)+k*(x-y)==0;
+% 
+% ode2= m*D2y+b*(Dy-Dx)+k*(y-x)==0;
+% 
+% ode1_s=laplace(ode1,s);
+% ode2_s=laplace(ode2,s);
+% 
+% ode1_s = subs(ode1_s,[subs(diff(x(t), t), t, 0),laplace(x(t), t, s),laplace(y(t), t, s),x(0),y(0),laplace(f(t), t, s)],[0,X,Y,0,0,F])
+% ode2_s = subs(ode2_s,[laplace(x(t), t, s),laplace(y(t), t, s),subs(diff(y(t), t), t, 0),x(0),y(0)],[X,Y,0,0,0])
+% 
+% sol=solve([ode1_s ode2_s],[X Y])
+
+% % P2.37 풀이
+% 
+% syms k1 k2 x(t) y(t) m1 m2 X Y u(t)
+% 
+% D2x=diff(x,t,2);
+% D2y=diff(y,t,2);
+% % u = stepfun(t,0); 
+% 
+% % ode1=m1*D2x+k1*x+k2*(x-y)==0;
+% % ode2=m2*D2y+k2*(y-x)+ u==0;
+% 
+% ode1=D2x+x+(x-y)==0;
+% ode2=D2y+(y-x)+u==0;
+% ode1_s=laplace(ode1,s);
+% ode2_s=laplace(ode2,s);
+% 
+% ode1_s=subs(ode1_s,[laplace(x(t), t, s),laplace(y(t), t, s),subs(diff(x(t), t), t, 0),laplace(u(t), t, s),x(0),y(0)],[X,Y,0,U,0,0])
+% ode2_s=subs(ode2_s,[laplace(x(t), t, s),laplace(y(t), t, s),subs(diff(y(t), t), t, 0),laplace(u(t), t, s),x(0),y(0)],[X,Y,0,U,0,0])
+% 
+% sol=solve([ode1_s ode2_s],[X Y])
