@@ -26,9 +26,7 @@
 % eqn_s3= laplace(eqn_t3);
 % 
 % pretty(eqn_s3);
+n=[0:32];
+xn=2*cos(pi*n/4)+sin(pi*n/8)+2*cos(pi*n/2+pi/6);
 
-syms Y(s) y(t) s k
-
-eqns = Y(s)-k/{s*(s+50)}==0;
-
-ilaplace(eqns,t)
+stem(n,xn)
