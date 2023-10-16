@@ -19,4 +19,35 @@
 1. 5주차 1차시 강의 예제 3.1 문제 풀이
 * 상태공간방정식 ss 사용
 * 배열선언
-3. MATLAB 2023b 버전에서는 initial(상태공간방정식,초기치,시간) 함수를 사용할때 시간 측을 [xo x]로 선언하지만 이전버전은 그냥 끝나는 시간을 입력
+2. MATLAB 2023b 버전에서는 initial(상태공간방정식,초기치,시간) 함수를 사용할때 시간축을 [ $x_0$ $x$ ] 로 선언하지만 이전버전은 그냥 끝나는 시간을 입력
+---  
+# 10/10 (화) 10:19 PM
+1.6주차 1차시 강의 Phase variable Canonical form 실습
+* num과 den의 항 개수를 일치시켜주어야 함.
+* state 함수의 배열을 만들어주는 tf2ss(num,den) 사용
+* [A B C D] = tf2ss(num,den)
+* MATLAB은 state 변수설정을 역순으로
+
+$$\textbf{x}(t)=\begin{pmatrix}
+x_1(t) \\
+x_2(t) \\
+x_3(t) \\
+x_4(t) 
+\end{pmatrix}=\begin{pmatrix}
+\dot{x}_2(t) \\
+\dot{x}_3(t) \\
+\dot{x}_4(t) \\
+z(t) 
+\end{pmatrix}=\begin{pmatrix}
+\dddot{z}(t) \\
+\ddot{z}(t) \\
+\dot{z}(t) \\
+z(t) 
+\end{pmatrix}$$
+
+$$
+\begin{aligned}
+\dot{x}_1(t)&=\ddddot{z}(t)\\
+&=-a_3\dddot{z}(t)-a_2\ddot{z}(t)-a_1\dot{z}(t)+u(t)\\
+&=-a_3x_1(t)-a_2x_2(t)-a_1x_3(t)-a_0x_4(t)+u(t)
+\end{aligned}$$
