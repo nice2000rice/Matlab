@@ -1,13 +1,13 @@
 
 % % P2.15 풀이
 syms x(t) m k s b f
-Dx=diff(x,t);
+Dx=diff(x,t)
 D2x=diff(x,t,2);
 %각각 1계 2계 미분 표시
-f=ilaplace(1,t);
+f=ilaplace(1,t)
 %임펄스함수 정의
 
-ode = D2x+k*x/m+b*Dx/m-f/m==0;
+ode = D2x+k*x/m+b*Dx/m-f/m==0
 %기계시스템 모델링
 
 % %그냥 미분 방정식으로 풀었음
