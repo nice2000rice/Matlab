@@ -15,7 +15,9 @@ B=[0 0 1/M1 0]';
 C=[1 0 0 0]; % y(t) = p(t)
 % C = [0 1 0 0]; % y(t) = q(t)
 D= 0;
+[num den]=ss2tf(A,B,C,D)
 
 sys=ss(A, B, C, D)
 x0=[0.1 0 0 0]
+plot()
 initial(sys,x0,5)

@@ -4,7 +4,7 @@ syms M1 M2 V1 V2 b1 b2 s k R
 eqn1 = M1*s*V1+V1*(b1+b2)-V2*b2==R;
 eqn2 = M2*s*V2+k*V2/s-b1*(V1-V2)==0;
 
-sol = solve([eqn1,eqn2],[V1,V2]);
+sol = solve([eqn1,eqn2],[V1,V2])
 %연립방정식 
 
 pretty(sol.V1/R)

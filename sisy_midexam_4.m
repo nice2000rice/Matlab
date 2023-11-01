@@ -1,9 +1,10 @@
-t=-5:0.01:5
-for c=1:1:1001
-    if(c>=501&&c<=601)
-        x(1,c)=(c-501)/100;
-    elseif(c>601&&c<=701)
-        x(1,c)=(-c+701)/100;
+t=-5:0.01:5;
+t_idx=find(t==0)
+for c=1:length(t)
+    if(c>=find(t==0)&&c<=find(t==1))
+        x(1,c)=(c-find(t==0))/100;
+    elseif(c>find(t==1)&&c<=find(t==2))
+        x(1,c)=(-c+find(t==2))/100;
     else
         x(1,c)=0;
 
