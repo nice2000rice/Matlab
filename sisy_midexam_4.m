@@ -10,8 +10,9 @@ for c=1:length(t)
 
     end
 end
+find(t==1)
 
-h=zeros(1,1001)
+h=zeros(1,1001);
 h(1,501)=1;
 h(1,601)=-1;
 
